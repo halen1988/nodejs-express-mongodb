@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成试卷</title>
+    <%- include('layout/common-css.html');%>
+</head>
+<body>
+<%- include('layout/header.html');%>
+<div class="type-wrap">
+    <form action="/select/select-question-list" method="post">
+
+        <% for(let i=0; i<typeArr.length; i++){ %>
+        <div class="question-list-wrap">
+            <div class="type-item">
+                <span class="question-title"><%= typeArr[i].name %></span>
+                <input type="hidden" name="selectType_<%= typeArr[i].type %>" value="<%= typeArr[i].type %>" />
+            </div>
+             <% for(let j=0; j < typeArr2.length; j++){ %>
+               <!--   <div class="type-item">
+                    <span class="type-title"><%= typeArr2[j].name %></span>
+                    <input type="hidden" name="answerType" value="<%= typeArr2[j].type %>" />
+                </div> -->
+                 <div class="type-item">
+                     <input type="hidden" name="answerType_<%= typeArr[i].type %>_<%= typeArr2[j].type %>" value="<%= typeArr2[j].type %>" />
+                     <span class="type-title"><%= typeArr2[j].name %></span>
+                     <input type="text" name="questionNum_<%= typeArr[i].type %>_<%= typeArr2[j].type %>" value="" placeholder="请输入题型个数" />
+                 </div>
+            <% } %>
+            <div class="type-item">
+                <span class="type-title">分数</span>
+                <input name="score" value="5" />
+
+            </div>
+        </div>
+        <% } %>
+
+        <button class="submit-button" type="submit">提交生成</button>
+
+    </form>
+</div>
+
+</body>
+</html>

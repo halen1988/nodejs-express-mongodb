@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统</title>
+    <%- include('layout/common-css.html');%>
+</head>
+<body>
+<%- include('layout/header.html');%>
+<div class="select-list">
+    <div class="score-wrap">
+        <em class="score-txt">本次试题总得分：</em>
+        <span class="score"><%= score %></span>
+    </div>
+    <ul>
+
+         <% for(let j=0; j < findListArr.length; j++){
+            let list = findListArr[j];
+            const selects = list.selects || [];
+        %>
+        <li>
+                <div class="question-type">
+                    <span class="type-name"><%= list.selectTypeName %></span>
+
+                </div>
+                <div class="question-list">
+                    <span class="select-title"><%= j+1 %>.&nbsp;&nbsp;&nbsp;<%= list.typeName || list.question %>
+                        <span class=<%= list.isRight ? 'answer-right' : 'answer-wrong' %>></span>
+                        <%= list.selectValue %>
+                    </span>
+
+                    <% for(let n=0; n < selects.length; n++){
+                    let select = selects[n];
+                    %>
+                    <%
+                        if(select.value && select.value !== ''){
+                    %>
+                    <label class="select-answer"> <%= select.value %>
+                        <% if(list.selectType === '1') { %>
+                            <% if(select.isSelected === 'true'){ %>
+                        <input type="radio" checked   name=<%= list.selectType %>_<%= list.answerType %>_<%= list._id %> value=<%= select.value %> />
+                            <% }else{ %>
+                        <input type="radio" disabled  name=<%= list.selectType %>_<%= list.answerType %>_<%= list._id %> value=<%= select.value %> />
+                            <% } %>
+                            <% }else if(list.selectType === '2'){ %>
+                            <% if(select.isSelected === 'true'){ %>
+                        <input type="checkbox" checked  name=<%= list.selectType %>_<%= list.answerType %>_<%= list._id %> value=<%= select.value %> />
+                            <% }else{ %>
+                        <input type="checkbox" disabled name=<%= list.selectType %>_<%= list.answerType %>_<%= list._id %> value=<%= select.value %> />
+                        <% } }%>
+                    </label>
+                    <%
+                    }
+                    %>
+                    <!--<input type="hidden" name=<%= list.answerType %> value=<%= select.answerType %> />-->
+                    <% } %>
+                    <% if(list.selectType === '3'){ %>
+                    <textarea name=<%= list._id %> class="textarea"></textarea>
+                    <% } %>
+
+                </div>
+            </li>
+        <% } %>
+    </ul>
+</div>
+<!--<%- include('layout/bottom-js.html');%>-->
+</body>
+</html>

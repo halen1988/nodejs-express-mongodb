@@ -1,0 +1,9 @@
+{
+  "project_name": "项目",
+  "server_port": 8080,
+  "session_secret": "mkkeeyy",
+  "mongo_connect_url": "mongodb://localhost:27017/",
+  "mongo_dbname": "questions",
+  "collection_name":"questions",
+  "mongo_pool_size": 5
+}

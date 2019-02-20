@@ -1,0 +1,19 @@
+html, body{
+    font-size: 14px;
+}
+
+
+.checked, .check {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #C21F39;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.checked {
+    background-color: #C21F39;
+}

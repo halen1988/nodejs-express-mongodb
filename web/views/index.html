@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Intelligent writer</title>
+        <%- include('layout/common-css.html');%>
+    </head>
+    <body>
+        <%- include('layout/header.html');%>
+        <div>
+            <form>
+                <div>
+                    <span>请选择题型</span>
+                    <label>
+                        <select>
+                            <option>单选题</option>
+                            <option>多选题</option>
+                            <option>简答题</option>
+                        </select>
+                    </label>
+                </div>
+            </form>
+            <!--首页，服务器时间：<%=time%>-->
+            <!--<%= project_name %>-->
+        </div>
+        <%- include('layout/bottom-js.html');%>
+</body>
+</html>

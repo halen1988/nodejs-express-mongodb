@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统</title>
+    <%- include('layout/common-css.html');%>
+</head>
+<body>
+<%- include('layout/header.html');%>
+<div class="type-wrap">
+    <form action="/type/addtype" id="jsForm" method="post">
+        <div class="type-item">
+            <span class="type-title">请选择题型</span>
+            <select name="selectType">
+                <% for(let i=0; i<typeArr.length; i++){ %>
+                <option value="<%= typeArr[i].type %>"><%= typeArr[i].name %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="type-item">
+            <span class="type-title">请选择类型</span>
+            <select name="answerType">
+                <% for(let j=0; j < typeArr2.length; j++){ %>
+                <option value="<%= typeArr2[j].type %>"><%= typeArr2[j].name %></option>
+                <% } %>
+            </select>
+        </div>
+
+        <div id="jsAnswer">
+            <div class="type-item">
+                <span class="type-title">题目</span>
+                <input name="typeName" value="" placeholder="请输入问题名称" />
+            </div>
+            <div class="type-item">
+                <span class="type-title">题目描述</span>
+                <textarea name="typeNameDis" class="answer-dis" placeholder="请输入代码端"></textarea>
+            </div>
+            <div class="type-item">
+                <span class="type-title">答案1</span>
+                <input name="selectItme" value="" placeholder="请输入选项1" />
+                <input type="hidden" name="isSelected" value="" />
+                <span class="check"></span>
+            </div>
+            <div class="type-item">
+                <span class="type-title">答案2</span>
+                <input name="selectItme" value="" placeholder="请输入选项2" />
+                <input type="hidden" name="isSelected" value="" />
+                <span class="check"></span>
+            </div>
+            <div class="type-item">
+                <span class="type-title">答案3</span>
+                <input name="selectItme" value="" placeholder="请输入选项3" />
+                <input type="hidden" name="isSelected" value="" />
+                <span class="check"></span>
+            </div>
+            <div class="type-item">
+                <span class="type-title">答案4</span>
+                <input name="selectItme" value="" placeholder="请输入选项4" />
+                <input type="hidden" name="isSelected" value="" />
+                <span class="check"></span>
+            </div>
+        </div>
+        <div id="jsAnswer2" class="dn">
+            <div class="type-item">
+                <span class="type-title">解答题</span>
+                <textarea name="question" placeholder="请输入问答题"></textarea>
+            </div>
+            <div class="type-item">
+                <span class="type-title">解答题答案</span>
+                <textarea name="answer" placeholder="请输入问答题答案"></textarea>
+            </div>
+        </div>
+        <button id="jsSubmit" class="submit-button" type="button">提交</button>
+
+    </form>
+</div>
+<%- include('layout/bottom-js.html');%>
+</body>
+</html>

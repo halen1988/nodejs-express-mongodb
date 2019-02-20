@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统</title>
+    <%- include('layout/common-css.html');%>
+</head>
+<body>
+<%- include('layout/header.html');%>
+<div class="select-list">
+    <form action="/answer/answer-form" method="post">
+    <ul>
+
+         <% for(let j=0; j < findListArr.length; j++){
+            let list = findListArr[j];
+            const selects = list.selects || [];
+        %>
+        <li>
+                <div class="question-type">
+                    <!--<span class="type-name"><%= list.selectTypeName %></span>-->
+                    <!--<span class="type-name"><%= list.answerTypeName %></span>-->
+                </div>
+                <div class="question-list">
+                    <span class="select-title"><%= j+1 %>.&nbsp;&nbsp;&nbsp;<%= list.typeName || list.question %></span>
+                    <% if(list.typeNameDis){ %>
+                    <span class="type-name-dis">
+                        <%= list.typeNameDis %>
+                    </span>
+                    <% } %>
+                    <% for(let n=0; n < selects.length; n++){
+                    let select = selects[n];
+                    %>
+                    <%
+                        if(select.value && select.value !== ''){
+                    %>
+                    <label class="select-answer"> <pre><%= select.value %></pre>
+                        <% if(list.selectType === '1') { %>
+                        <input type="radio" name=<%= list.selectType %>_<%= list.answerType %>_<%= list._id %> value='<%= select.value.replace(/\"*\"/, '') %>' />
+                        <% }else if(list.selectType === '2'){ %>
+                        <input type="checkbox" name=<%= list.selectType %>_<%= list.answerType %>_<%= list._id %> value='<%= select.value.replace(/\"*\"/, '') %>' />
+                        <% } %>
+                    </label>
+                    <%
+                    }
+                    %>
+                    <!--<input type="hidden" name=<%= list.answerType %> value=<%= select.answerType %> />-->
+                    <% } %>
+                    <% if(list.selectType === '3'){ %>
+                    <textarea name=<%= list._id %> class="textarea"></textarea>
+                    <% } %>
+
+                </div>
+            </li>
+        <% } %>
+
+       <input type="submit" class="answer-button" value="提交" />
+    </ul>
+    </form>
+</div>
+<!--<%- include('layout/bottom-js.html');%>-->
+</body>
+</html>

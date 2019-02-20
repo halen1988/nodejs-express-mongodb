@@ -1,0 +1,7 @@
+{
+	"project_name":"考试题库项目",
+	"server_port":8080,
+	"session_secret":"mkkeeyy",
+    "mongo_connect_url": "mongodb://pro.feheadline.net:27017/proj",
+    "mongo_pool_size": 5
+}
